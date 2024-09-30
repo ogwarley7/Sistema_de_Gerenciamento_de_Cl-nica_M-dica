@@ -1,0 +1,47 @@
+DROP DATABASE IF EXISTS clinica_medica;
+
+CREATE DATABASE clinica_medica;
+
+USE clinica_medica;
+
+CREATE TABLE pacientes(
+id_paciente INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(100),
+data_nascimento DATE NOT NULL,
+telefone VARCHAR(15),
+endereco VARCHAR(255));
+
+CREATE TABLE medicos (
+id_medico INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(100) NOT NULL,
+especialidade VARCHAR(50),
+telefone VARCHAR(15),
+crm VARCHAR(20) UNIQUE NOT NULL);
+
+CREATE TABLE consultas (
+id_consulta INT AUTO_INCREMENT PRIMARY KEY,
+id_paciente INT,
+id_medico INT,
+data_consulta DATE NOT NULL,
+hora_consulta TIME NOT NULL,
+observacoes TEXT,
+FOREIGN KEY (id_paciente) REFERENCES pacientes (id_paciente),
+FOREIGN KEY (id_medico) REFERENCES medicos (id_medico));
+
+INSERT INTO pacientes (nome, data_nascimento, telefone, endereco) VALUES ('João da Silva', '1985-04-23', '11987654321', 'Rua das Flores,123'),
+('Maria Oliveira', '1990-11-15', '11976543210', 'Avenida Brasil, 456');
+
+INSERT INTO medicos (nome, especialidade, telefone, crm) VALUES ('Dr. Carlos Santos', 'Cardiologia', '11912345678', '123456'),
+('Dra. Ana Costa', 'Pediatria', '11923456789', '654321');
+
+INSERT INTO consultas (id_paciente, id_medico, data_consulta, hora_consulta,observacoes) VALUES (1, 1, '2024-09-20', '09:00:00', 'Consulta de rotina'),
+(2, 2, '2024-09-21', '14:00:00', 'Primeira consulta pediátrica');
+
+SELECT * FROM consultas;
+
+UPDATE pacientes SET telefone = '119999999999' WHERE id_paciente = 1;
+
+DELETE FROM consultas WHERE id_consulta = 1;
+
+
+
