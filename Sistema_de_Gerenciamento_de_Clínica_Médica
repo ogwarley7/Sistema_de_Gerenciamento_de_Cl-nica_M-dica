@@ -1,0 +1,5 @@
+Sistema de Gerenciamento de Clínica Médica
+
+Este projeto é um sistema de gerenciamento para clínicas médicas que permite registrar pacientes, 
+médicos e consultas. O sistema foi desenvolvido utilizando SQL e tem como objetivo facilitar a administração das operações da clínica, 
+proporcionando um controle eficiente sobre as informações dos pacientes e agendamentos.
